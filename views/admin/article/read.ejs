@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Ishuber - 写文章</title>
+    <link rel="stylesheet" href="../pc/css/init.css" />
+    <link rel="stylesheet" href="../pc/css/common.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
+    <style type="text/css">
+        div{
+            width:100%;
+            font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+        }
+        .readCreateUpload_form,.title {
+            display: block;
+            min-width:660px;
+            max-width:1024px;
+            margin: 50px auto;
+            padding-bottom: 30px;
+            text-align: center;
+            font-size: 25px;
+            outline: none;
+            border: none;
+            overflow: hidden;
+        }
+        .title {
+            text-align: left;
+            color: #aaa;
+            z-index: 9999;
+        }
+        #btns {
+            position: relative;
+            min-width:660px;
+            max-width:1024px;
+            margin: 0 auto;
+            top: -530px;
+        }
+        .submit {
+            position: absolute;
+            right: 15px;
+            outline: none;
+            border: 0px;
+            background: #fff;
+            font-size: 16px; 
+            cursor: pointer; 
+            z-index: 999999999;         
+        }
+        #edui3_body,#edui7_state,#edui42_body,#edui14_state,#edui52_body,#edui37_body,#edui51_body {
+            display: none;
+        }
+        .readCreateUpload_form {
+            position: relative;
+        }
+        .readCreateUpload_form img {
+            width: 50px;
+        }
+        .readCreateFile_box {
+            position: absolute;
+            top: calc(100% - 20px);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #555;
+        }
+        .readCreateSelectPic{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .readCreateFile_box span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 100%;
+            font-size: 14px;
+
+        }
+        #readCreateUpload {
+            position: absolute;
+            top: calc(100% - 20px);
+            left: 0;
+            width: 100%;
+            outline: none;
+            border: 0px;
+            background: #fff;
+            text-align: center;
+            display: none;
+            z-index: 1;
+            cursor: pointer;
+        }
+        #readCreateResult {
+            font-size: 20px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body data-id="<%= articleRead[0]._id %>">
+<div>
+    <div class="readCreateUpload_form">
+        <img src="<%= articleRead[0].coverPic %>" alt="">
+        <a href="javascript:;" class="readCreateFile_box">
+            <input class="readCreateSelectPic" type="file" name="readCreateSelectPic" id="readCreateSelectPic"><span>更 换 封 面</span>
+        </a>
+        <p id="readCreateResult"></p>
+        <button id="readCreateUpload">开始上传</button>
+    </div>
+    <input class="title" onfocus="this.select()" type="text" value="<%= articleRead[0].title %>" >
+    <script id="editor" type="text/plain" style="position: relative; min-width:660px;max-width:1024px;height:500px; margin: 0 auto;"><%- articleRead[0].content %></script>
+</div>
+<div id="btns">
+    <div>
+        <button class="submit" onclick="getContent()">发布</button>
+    </div>
+</div>
+<script src="/library/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../pc/js/common.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+    function getContent() {
+        var arr = [];
+        arr.push(UE.getEditor('editor').getContent());
+        var id = $('body').attr('data-id')
+        var content = arr.join("\n")
+        var title = $('.title').val()
+        var coverPic = $('.readCreateUpload_form img').attr('src')
+        $.ajax({
+            url: '/admin/articleRead/update',
+            type: 'post',
+            data: {
+                id: id,
+                title: title,
+                coverPic: coverPic,
+                content: content,
+            },
+            success: function() {
+                alert('更新成功！')
+                window.location.href="/read/readList";
+            }
+        })
+    }
+
+</script>
+<script>
+    $(document).ready(function() {
+        //上传图片
+        updateCoverPic()
+    })
+
+    //上传
+    function coverPicUploadFile(){
+      var file = document.getElementById("readCreateSelectPic")
+      var formData = new FormData();
+      formData.append('file',file.files[0]);
+      console.log(file.files[0])
+      $.ajax({
+        url: '/upload',
+        type: 'POST',
+        data: formData,
+        // async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data){
+          if(200 === data.code) {
+            $('#readCreateResult').html("上传成功！");
+            $('#readCreateUpload').css('display','none')
+            $('.readCreateFile_box span').css('display','block')
+            $('.readCreateUpload_form img').attr('src',data.imgPath);
+          } else {
+            $('#readCreateResult').html("上传失败！");
+            $('.readCreateFile_box span').css('display','block')
+          }
+          console.log('imgUploader upload success');
+        },
+        error: function(){
+          $("#readCreateResult").html("与服务器通信发生错误");
+          $('.readCreateFile_box span').css('display','block')
+        }
+      });
+    }
+
+    function updateCoverPic() {
+        $('#readCreateSelectPic').change(function() {
+            //显示被上传图片
+            var $file = $(this);  
+            var fileObj = $file[0];  
+      
+            var windowURL = window.URL || window.webkitURL;  
+            var dataURL;  
+            var $img = $(".readCreateUpload_form img");  
+      
+            if (fileObj && fileObj.files && fileObj.files[0]) {  
+                dataURL = windowURL.createObjectURL(fileObj.files[0]);  
+                $img.attr('src', dataURL);  
+            } else {  
+                dataURL = $file.val();  
+                var imgObj = document.getElementById("preview");  
+                imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";  
+                imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;  
+      
+            }
+            $('.readCreateFile_box span').css('display','none')
+            $('#readCreateUpload').css('display','block')
+            $('.readCreateUpload_form img ').css('width','100%')
+        })
+        //上传图片
+        var uploada = document.getElementById('readCreateUpload');
+        uploada.addEventListener("click",function () {
+            coverPicUploadFile();
+        },false);
+    }
+</script>
+</body>
+</html>

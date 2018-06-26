@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ishuber - 后台页面</title>
+	<link rel="stylesheet" href="/common/css/init.css">
+	<link rel="stylesheet" href="/admin/css/index.css">
+	<link rel="stylesheet" href="/admin/css/banner.css">
+	<link rel="stylesheet" href="/admin/css/project.css">
+	<link rel="stylesheet" href="/admin/css/read.css">
+	<link rel="stylesheet" href="/admin/css/user.css">
+</head>
+<body>
+	<div class="sidebar">
+		<ul>
+			<li>总览</li>
+			<li class="navBanner">banner</li>
+			<li class="navProject">project</li>
+			<li class="navRead">read</li>
+			<li class="navNews">news</li>
+		</ul>
+	</div>
+	<div class="main">
+		<section class="banner">
+			<h3>banner列表</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="thCell"><input type="checkbox"></th>
+						<th class="thTitle">标题</th>
+						<th class="thPic">图片</th>
+						<th class="thSort">排序</th>
+						<th class="thCreateTime">创建时间</th>
+						<th class="thState">状态</th>
+						<th class="thSetting">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% if(Banners.length) { %>
+					<% Banners.forEach(function(banner) { %>
+						<tr>
+							<th class="trCell"><input type="checkbox"></th>
+							<td class="trTitle"><%= banner.title %></td>
+							<td class="trPic"><img src="<%= banner.imgUrl %>" alt=""></td>
+							<td class="trSort"><input type="text" value="12"></td>
+							<td class="trCreateTime"></td>
+							<td class="trState">启用</td>
+							<td class="trSetting" date-id='<%= banner._id %>'>
+								<span>设置</span><i></i>
+								<div class="setMenu">
+									<u></u>
+									<ul>
+										<li class="edit">编辑</li>
+										<li class="remove">删除</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% })
+					} %>
+						
+					<tr class="createBanner">
+						<td>新建+</td>
+					</tr>
+					<div class="updateBox">
+						<ul>
+							<li class="title"><h3>更新banner</h3></li>
+							<li class="bannerTile">banner标题：<input type="text"></li>
+							<li class="bannerType">banner类型：<input type="text"></li>
+							<li class="bannerLink">banner链接：<input type="text"></li>
+							<li class="bannerPic">
+								<div>banner图片</div>
+								<img src="/pc/img/home/1.jpg" alt="">
+
+							    <div class="upload_form">
+							            <a href="javascript:;" class="file_box">
+							            	<input class="selectPic" type="file" name="selectPic" id="selectPic"><span>选 择 文 件</span>
+							            </a>
+							        <p id="bannerresult"></p>
+							        <img id="bannerimg" src="">
+							    	<button id="bannerupload">开始上传</button>
+							    </div>
+							</li>
+							<li class="button">
+								<div class="cancel">取消</div>
+								<div class="submit">保存</div>
+							</li>
+						</ul>
+					</div>
+				</tbody>	
+			</table>
+								
+		</section>
+
+
+
+		<section class="project">
+			<h3>project列表</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="thCell"><input type="checkbox"></th>
+						<th class="thTitle">标题</th>
+						<th class="thPic">图片</th>
+						<th class="thSort">排序</th>
+						<th class="thCreateTime">创建时间</th>
+						<th class="thState">状态</th>
+						<th class="thSetting">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<% if(Projects.length) { %>
+					<% Projects.forEach(function(project) { %>
+						<tr>
+							<th class="trCell"><input type="checkbox"></th>
+							<td class="trTitle"><%= project.title %></td>
+							<td class="trPic"><img src="<%= project.imgUrl %>" alt=""></td>
+							<td class="trSort"><input type="text" value="12"></td>
+							<td class="trCreateTime"></td>
+							<td class="trState">启用</td>
+							<td class="trSetting" date-id='<%= project._id %>'>
+								<span>设置</span><i></i>
+								<div class="setMenu">
+									<u></u>
+									<ul>
+										<li class="edit">编辑</li>
+										<li class="remove">删除</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% })
+					} %>
+					<tr class="createProject">
+						<td>新建+</td>
+					</tr>
+					<div class="updateBox">
+						<ul>
+							<li class="title"><h3>更新project</h3></li>
+							<li class="projectTile">project标题：<input type="text"></li>
+							<li class="projectType">project类型：<input type="text"></li>
+							<li class="projectLink">project链接：<input type="text"></li>
+							<li class="projectPic">
+								<div>project图片</div>
+								<img src="/pc/img/home/1.jpg" alt="">
+
+							    <div class="projectUpload_form">
+							            <a href="javascript:;" class="projectFile_box">
+							            	<input class="projectSelectPic" type="file" name="selectPic" id="projectSelectPic"><span>选 择 文 件</span>
+							            </a>
+							        <p id="projectResult"></p>
+							        <img id="projectImg" src="">
+							    	<button id="projectUpload">开始上传</button>
+							    </div>
+							</li>
+							<li class="button">
+								<div class="cancel">取消</div>
+								<div class="submit">保存</div>
+							</li>
+						</ul>
+					</div>
+				</tbody>	
+			</table>
+								
+		</section>
+
+
+		<section class="read">
+			<h3>read列表</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="thCell"><input type="checkbox"></th>
+						<th class="thTitle">标题</th>
+						<th class="thPic">图片</th>
+						<th class="thSort">排序</th>
+						<th class="thCreateTime">创建时间</th>
+						<th class="thState">状态</th>
+						<th class="thSetting">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<% if(Reads.length) { %>
+					<% Reads.forEach(function(read) { %>
+						<tr>
+							<th class="trCell"><input type="checkbox"></th>
+							<td class="trTitle"><%= read.title %></td>
+							<td class="trPic"><img src="<%= read.imgUrl %>" alt=""></td>
+							<td class="trSort"><input type="text" value="12"></td>
+							<td class="trCreateTime"></td>
+							<td class="trState">启用</td>
+							<td class="trSetting" date-id='<%= read._id %>'>
+								<span>设置</span><i></i>
+								<div class="setMenu">
+									<u></u>
+									<ul>
+										<li class="edit">编辑</li>
+										<li class="remove">删除</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% })
+					} %>
+					<tr class="createRead">
+						<td>新建+</td>
+					</tr>
+					<div class="updateBox">
+						<ul>
+							<li class="title"><h3>更新read</h3></li>
+							<li class="readTile">read标题：<input type="text"></li>
+							<li class="readType">read类型：<input type="text"></li>
+							<li class="readLink">read链接：<input type="text"></li>
+							<li class="readPic">
+								<div>read图片</div>
+								<img src="/pc/img/home/1.jpg" alt="">
+
+							    <div class="readUpload_form">
+							            <a href="javascript:;" class="readFile_box">
+							            	<input class="readSelectPic" type="file" name="selectPic" id="readSelectPic"><span>选 择 文 件</span>
+							            </a>
+							        <p id="readResult"></p>
+							        <img id="readImg" src="">
+							    	<button id="readUpload">开始上传</button>
+							    </div>
+							</li>
+							<li class="button">
+								<div class="cancel">取消</div>
+								<div class="submit">保存</div>
+							</li>
+						</ul>
+					</div>
+				</tbody>	
+			</table>
+								
+		</section>
+
+		<section class="user">
+			<h3>user列表</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="removeCheck">删除</th>
+					</tr>
+					<tr>
+						<th class="thCell"><input type="checkbox"></th>
+						<th class="thTitle">用户名</th>
+						<th class="thPic">头像</th>
+						<th class="thSort">排序</th>
+						<th class="thCreateTime">创建时间</th>
+						<th class="thState">密码</th>
+						<th class="thSetting">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<% if(Users.length) { %>
+					<% Users.forEach(function(user) { %>
+						<tr>
+							<th class="trCell"><input type="checkbox"></th>
+							<td class="trTitle"><%= user.name %></td>
+							<td class="trPic"><img src="<%= user.imgUrl %>" alt=""></td>
+							<td class="trSort"><input type="text" value="12"></td>
+							<td class="trCreateTime"></td>
+							<td class="trState"></td>
+							<td class="trSetting" date-id='<%= user._id %>'>
+								<span>设置</span><i></i>
+								<div class="setMenu">
+									<u></u>
+									<ul>
+										<li class="edit">编辑</li>
+										<li class="remove">删除</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% })
+					} %>
+				</tbody>	
+			</table>
+								
+		</section>
+
+	</div>
+    
+</body>
+<script src="/library/js/jquery-3.3.1.min.js"></script>
+<script src="/admin/js/index.js"></script>
+<script src="/admin/js/banner.js"></script>
+<script src="/admin/js/project.js"></script>
+<script src="/admin/js/read.js"></script>
+<script src="/admin/js/user.js"></script>
+<script>
+	$(document).ready(function(){
+		switchs()
+		banner()
+		project()
+		read()
+		user()
+	});
+</script>
+
+</html>

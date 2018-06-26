@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ishuber - 文章管理</title>
+	<link rel="stylesheet" href="/common/css/init.css">
+	<link rel="stylesheet" href="/admin/css/index.css">
+	<link rel="stylesheet" href="/admin/css/read.css">
+</head>
+<body>
+	<div class="sidebar">
+		<ul>
+			<li>总览</li>
+			<li class="navProject">project</li>
+			<li class="navRead">read</li>
+			<li class="navNews">news</li>
+		</ul>
+	</div>
+	<div class="main">
+		<section class="read">
+			<h3>read列表</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="removeCheck">删除</th>
+					</tr>
+					<tr>
+						<th class="thCell"><input type="checkbox"></th>
+						<th class="thTitle">标题</th>
+						<th class="thPic">图片</th>
+						<th class="thCreateTime">创建时间</th>
+						<th class="thState">状态</th>
+						<th class="thSetting">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% if(articleReads.length) { %>
+					<% articleReads.forEach(function(read) { %>
+						<tr>
+							<th class="trCell"><input type="checkbox"></th>
+							<td class="trTitle"><%= read.title %></td>
+							<td class="trPic"><img src="<%= read.coverPic %>" alt=""></td>
+							<td class="trCreateTime"></td>
+							<td class="trState">启用</td>
+							<td class="trSetting" date-id='<%= read._id %>'>
+								<span>设置</span><i></i>
+								<div class="setMenu">
+									<u></u>
+									<ul>
+										<li class="edit"><a href="/admin/articleRead/update/<%= read._id %>">编辑</a></li>
+										<li class="remove">删除</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% })
+					} %>
+					<tr class="createRead">
+						<td><a href="/read/createRead">新建+</a></td>
+					</tr>
+				</tbody>	
+			</table>
+								
+		</section>
+
+	</div>
+    
+</body>
+<script src="/library/js/jquery-3.3.1.min.js"></script>
+<script src="/admin/js/index.js"></script>
+<script src="/admin/js/article.js"></script>
+<script>
+	$(document).ready(function(){
+		switchs()
+		article()
+	});
+</script>
+
+</html>

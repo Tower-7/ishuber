@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ishuber</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+  	<meta name="Description" content="Ishuber-Life" />
+	<link rel="stylesheet" href="pc/css/init.css">
+	<link rel="stylesheet" href="pc/css/common.css">
+	<link rel="stylesheet" href="pc/css/index.css">
+	<link rel="stylesheet" href="pc/css/style.css">
+	<script type="text/javascript">
+        var cdata = {
+            navhover:0        };
+        var wDomain = 'http://www.ishuber.com/';
+        var ucDomain = 'http://passport.ishuber.com/';
+        var cookieDomain = 'ishuber.com';
+        var isAndroid=navigator.userAgent.match(/android|Linux/ig),isIos=navigator.userAgent.match(/iphone|ipod|ipad/ig);
+                if(isAndroid || isIos){ //手机访问PC网时跳转对应wap页面
+            var toUrl = "http://www.ishuber.com/m";
+            if(window.location.search.length>0) toUrl+=window.location.search;
+            window.location.href= toUrl;
+        }
+    </script>
+</head>
+<body>
+	<section class="nav">
+		<div class="pic">
+			<img src="pc/img/home/nav.png" alt="">
+		</div>
+		<div class="navTxt">
+			<img class="close" src="pc/img/home/close.png" alt="">
+			<ul>
+				<li><a href="/">首 页</a></li>
+				<li><a href="/project">精 选</a></li>
+				<li><a href="/read/readList">阅 读</a></li>
+				<li><a href="/new">资 讯</a></li>
+			</ul>
+			<img class="bg" src="pc/img/common/bg_1.jpg" alt="">
+		</div>
+	</section>
+	<div class="writingArticle"><a href="read/createRead">写文章</a></div>
+	<section class="banner">
+		<div class="demo-cont">
+		  <!-- slider start -->
+		  <div class="fnc-slider example-slider">
+		    <div class="fnc-slider__slides">
+		      <!-- slide start -->
+		      <div class="fnc-slide m--blend-green m--active-slide">
+		        <div class="fnc-slide__inner">
+		          <div class="fnc-slide__mask">
+		            <div class="fnc-slide__mask-inner"></div>
+		          </div>
+		          <div class="fnc-slide__content">
+		            <h2 class="fnc-slide__heading">
+		              <div class="fnc-slide__heading-line">
+		                <span>The</span>
+		              </div>
+		              <div class="fnc-slide__heading-line">
+		                <span>Scenery</span>
+		              </div>
+		            </h2>
+		            <button type="button" class="fnc-slide__action-btn">
+		              About Us
+		              <span data-text="About Us">About Us</span>
+		            </button>
+		          </div>
+		        </div>
+		      </div>
+		      <!-- slide end -->
+		      <!-- slide start -->
+		      <div class="fnc-slide m--blend-dark">
+		        <div class="fnc-slide__inner">
+		          <div class="fnc-slide__mask">
+		            <div class="fnc-slide__mask-inner"></div>
+		          </div>
+		          <div class="fnc-slide__content">
+		            <h2 class="fnc-slide__heading">
+		              <div class="fnc-slide__heading-line">
+		                <span>Painting</span>
+		              </div>
+		              <div class="fnc-slide__heading-line">
+		                <span></span>
+		              </div>
+		            </h2>
+		            <button type="button" class="fnc-slide__action-btn">
+		              About Us
+		              <span data-text="About Us">About Us</span>
+		            </button>
+		          </div>
+		        </div>
+		      </div>
+		      <!-- slide end -->
+		      <!-- slide start -->
+		      <div class="fnc-slide m--blend-red">
+		        <div class="fnc-slide__inner">
+		          <div class="fnc-slide__mask">
+		            <div class="fnc-slide__mask-inner"></div>
+		          </div>
+		          <div class="fnc-slide__content">
+		            <h2 class="fnc-slide__heading">
+		              <div class="fnc-slide__heading-line">
+		                <span>The</span>
+		              </div>
+		              <div class="fnc-slide__heading-line">
+		                <span>City</span>
+		              </div>
+		            </h2>
+		            <button type="button" class="fnc-slide__action-btn">
+		              About Us
+		              <span data-text="About Us">About Us</span>
+		            </button>
+		          </div>
+		        </div>
+		      </div>
+		      <!-- slide end -->
+		      <!-- slide start -->
+		      <div class="fnc-slide m--blend-blue">
+		        <div class="fnc-slide__inner">
+		          <div class="fnc-slide__mask">
+		            <div class="fnc-slide__mask-inner"></div>
+		          </div>
+		          <div class="fnc-slide__content">
+		            <h2 class="fnc-slide__heading">
+		              <div class="fnc-slide__heading-line">
+		                <span>Life</span>
+		              </div>
+		              <div class="fnc-slide__heading-line">
+		                <span>Style</span>
+		              </div>
+		            </h2>
+		            <button type="button" class="fnc-slide__action-btn">
+		              About Us
+		              <span data-text="About Us">About Us</span>
+		            </button>
+		          </div>
+		        </div>
+		      </div>
+		      <!-- slide end -->
+		    </div>
+		    <nav class="fnc-nav">
+		      <div class="fnc-nav__bgs">
+		        <div class="fnc-nav__bg m--navbg-green m--active-nav-bg"></div>
+		        <div class="fnc-nav__bg m--navbg-dark"></div>
+		        <div class="fnc-nav__bg m--navbg-red"></div>
+		        <div class="fnc-nav__bg m--navbg-blue"></div>
+		      </div>
+		      <div class="fnc-nav__controls">
+		        <button class="fnc-nav__control">
+		          景色
+		          <span class="fnc-nav__control-progress"></span>
+		        </button>
+		        <button class="fnc-nav__control">
+		          绘画
+		          <span class="fnc-nav__control-progress"></span>
+		        </button>
+		        <button class="fnc-nav__control">
+		          城市
+		          <span class="fnc-nav__control-progress"></span>
+		        </button>
+		        <button class="fnc-nav__control">
+		          生活
+		          <span class="fnc-nav__control-progress"></span>
+		        </button>
+		      </div>
+		    </nav>
+		  </div>
+		  <!-- slider end -->
+		  <div class="demo-cont__credits">
+		    <h2 class="demo-cont__credits-heading">联系合作</h2>
+		    <div class="demo-cont__credits-close"></div>
+		    </div>
+		  </div>
+		</div>
+	</section>
+	
+	<section class="pro">
+		<div class="title">
+			<h2>精 选</h2>
+		</div>
+		<ul>
+			<% if(Projects.length) { 
+				Projects.forEach(function(project){ %>
+				<li><img src="<%= project.imgUrl %>" alt="">
+					<figcaption>
+						<h3><%= project.title %></h3>
+						<p><%= project.content %></p>
+						<a href="/project">了解更多</a>
+					</figcaption>
+			<% }) %>
+			<% } %>
+		</ul>
+	</section>
+	<section class="read">
+		<div class="title">
+			<h2>阅 读</h2>
+		</div>
+		<ul>
+			<li>
+				<a href="/read/readList"><img src="pc/img/article/4.jpg" alt=""></a>
+				<p class="tab">设计</p>
+				<p class="content">设计师，如何运用产品思维制作「个人简历」。</p>
+				<div class="intro">
+					<div>3</div>
+					<div>Apr·2018</div>
+				</div>
+			<li>
+				<a href="/read/readList"><img src="pc/img/article/3.jpg" alt=""></a>
+				<p class="tab">美食</p>
+				<p class="content">越来越爱上自己做的哈根达斯啦</p>
+				<div class="intro">
+					<div>3</div>
+					<div>Apr·2018</div>
+				</div>
+			<li>
+				<a href="/read/readList"><img src="pc/img/article/7.jpg" alt=""></a>
+				<p class="tab">科技</p>
+				<p class="content">身处互联网时代，隐私保护是可能的吗？</p>
+				<div class="intro">
+					<div>3</div>
+					<div>Apr·2018</div>
+				</div>
+			<li>
+				<a href="/read/readList"><img src="pc/img/article/2.jpg" alt=""></a>
+				<p class="tab">旅行</p>
+				<p class="content">此刻的放逐，是未尽的旅程！</p>
+				<div class="intro">
+					<div>3</div>
+					<div>Apr·2018</div>
+				</div>
+		</ul>
+	</section>
+	<section class="news">
+		<div class="title">
+			<h2>热 点</h2>
+			<ul>
+				<li><i>2018.4.4</i><a href="">	業務拡大に伴い事務所を移転いたしました。</a></li>
+				<li><i>2018.4.4</i><a href="">	業務拡大に伴い事務所を移転いたしました。</a></li>
+				<li><i>2018.4.4</i><a href="">	業務拡大に伴い事務所を移転いたしました。</a></li>
+			</ul>
+		</div>
+	</section>
+	<section class="footer">
+		<div class="txt">一座城市，一段故事，有你有我。</div>
+		<!-- <div class="pic">	
+			<img src="pc/img/index/wechat.jpg" alt="">	
+		</div> -->
+		<div class="top">
+			<canvas class="canvas">
+				
+			</canvas>
+		</div>
+		<div class="support">By:塔塔七</div>
+	</section>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="pc/js/common.js"></script>
+	<script src="pc/js/index.js"></script>
+	<script src="pc/js/canvas.js"></script>
+</body>
+</html>

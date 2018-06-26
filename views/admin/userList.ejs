@@ -1,0 +1,70 @@
+a<section class="user">
+			<h3>user列表</h3>
+			<table>
+				<thead>
+					<tr>
+						<th class="thCell"><input type="checkbox"></th>
+						<th class="thTitle">标题</th>
+						<th class="thPic">图片</th>
+						<th class="thSort">排序</th>
+						<th class="thCreateTime">创建时间</th>
+						<th class="thState">状态</th>
+						<th class="thSetting">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<% if(Users.length) { %>
+					<% Users.forEach(function(user) { %>
+						<tr>
+							<th class="trCell"><input type="checkbox"></th>
+							<td class="trTitle"><%= user.title %></td>
+							<td class="trPic"><img src="<%= user.imgUrl %>" alt=""></td>
+							<td class="trSort"><input type="text" value="12"></td>
+							<td class="trCreateTime"></td>
+							<td class="trState">启用</td>
+							<td class="trSetting" date-id='<%= user._id %>'>
+								<span>设置</span><i></i>
+								<div class="setMenu">
+									<u></u>
+									<ul>
+										<li class="edit">编辑</li>
+										<li class="remove">删除</li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% })
+					} %>
+					<tr class="createUser">
+						<td>新建+</td>
+					</tr>
+					<div class="updateBox">
+						<ul>
+							<li class="title"><h3>更新user</h3></li>
+							<li class="userTile">user标题：<input type="text"></li>
+							<li class="userType">user类型：<input type="text"></li>
+							<li class="userLink">user链接：<input type="text"></li>
+							<li class="userPic">
+								<div>user图片</div>
+								<img src="/pc/img/home/1.jpg" alt="">
+
+							    <div class="userUpload_form">
+							            <a href="javascript:;" class="userFile_box">
+							            	<input class="userSelectPic" type="file" name="selectPic" id="userSelectPic"><span>选 择 文 件</span>
+							            </a>
+							        <p id="userResult"></p>
+							        <img id="userImg" src="">
+							    	<button id="userUpload">开始上传</button>
+							    </div>
+							</li>
+							<li class="button">
+								<div class="cancel">取消</div>
+								<div class="submit">保存</div>
+							</li>
+						</ul>
+					</div>
+				</tbody>	
+			</table>
+								
+		</section>

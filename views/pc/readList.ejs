@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ishuber - 文章</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" href="../pc/css/init.css" />
+	<link rel="stylesheet" href="../pc/css/common.css" />
+	<link rel="stylesheet" href="../pc/css/readList.css" />
+</head>
+<body>
+	<section class="nav">
+		<div class="pic">
+			<img src="../pc/img/home/nav.png" alt="">
+		</div>
+		<div class="navTxt">
+			<img class="close" src="../pc/img/home/close.png" alt="">
+			<ul>
+				<li><a href="/">首 页</a></li>
+				<li><a href="/project">精 选</a></li>
+				<li><a href="/read/readList">阅 读</a></li>
+				<li><a href="/new">资 讯</a></li>
+			</ul>
+			<img class="bg" src="../pc/img/common/bg_1.jpg" alt="">
+		</div>
+	</section>
+	<div class="writingArticle"><a href="/read/createRead">写文章</a></div>
+	<section class="wrap">
+		<ul>
+			<% if(ViewReads.length) { 
+				ViewReads.forEach(function(read){ %>
+			<li>
+				<a href="/read/<%= read.id %>">
+					<div class="contentBox">
+						<div class="title"><%= read.title %></div>
+						<div class="content"><%- read.content %></div>
+						<div class="autor">文章来自：</div>
+					</div>
+					<div class="imgBox"><img src="<%= read.coverPic %>" alt=""></div>
+				</a>
+			</li>
+			<% }) %>
+			<% } %>
+		</ul>
+	</section>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="../pc/js/common.js"></script>
+	<script src="../pc/js/readList.js"></script>
+</body>
+</html>
